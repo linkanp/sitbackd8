@@ -1,0 +1,6 @@
+name: Sitback Utility
+description: Custom module for various utility
+package: Sitback Custom
+type: module
+version: '8.x-1.0'
+core: '8.x'

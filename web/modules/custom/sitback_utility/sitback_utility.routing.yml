@@ -1,0 +1,25 @@
+sitback_utility.admin_index:
+  path: '/admin/config/sitback'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Sitback Configurations'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
+sitback_utility.email_config:
+  path: '/admin/config/sitback/email'
+  defaults:
+    _form: '\Drupal\sitback_utility\Form\EmailSettingsForm'
+    _title: 'Email Configuration'
+  requirements:
+    _permission: 'administer menu'
+
+sitback_utility.payment_info:
+  path: '/payment-info'
+  defaults:
+    _form: '\Drupal\sitback_utility\Form\PaymentInfoForm'
+    _title: 'Payment Information'
+  requirements:
+    _permission: 'access content'

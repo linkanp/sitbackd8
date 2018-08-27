@@ -1,0 +1,20 @@
+// Default variables.
+@import "default-variables";
+
+// Bootstrap Framework.
+@import '../bootstrap/assets/stylesheets/bootstrap';
+
+// Base-theme overrides.
+@import 'overrides';
+
+// Change first sidebar block background color to yellow
+.region-sidebar-first {
+  section{
+    background-color: $first-sidebar-bg-color;
+  }
+}
+
+// Change the default font color to dark blue
+body{
+  color: $default-font-color;
+}

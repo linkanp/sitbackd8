@@ -1,0 +1,13 @@
+sitback_utility.admin_index:
+  title: 'Sitback Custom Configurations'
+  description: 'All sitback custom configurations.'
+  parent: system.admin_config
+  route_name: sitback_utility.admin_index
+  weight: 100
+
+sitback_utility.email_config:
+  title: 'Email Configurations'
+  description: 'Email configurations to send payment information.'
+  parent: sitback_utility.admin_index
+  route_name: sitback_utility.email_config
+  weight: 100

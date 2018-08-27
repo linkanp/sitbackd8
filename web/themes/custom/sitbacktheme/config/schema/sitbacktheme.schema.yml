@@ -1,0 +1,5 @@
+# Schema for the theme setting configuration file of the sitbacktheme theme.
+
+sitbacktheme.settings:
+  type: theme_settings
+  label: 'sitbacktheme settings'
