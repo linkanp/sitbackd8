@@ -2,3 +2,31 @@
 /**
  * @file Module file
  */
+
+use Drupal\Core\Render\Markup;
+
+
+/**
+ * Implements hook_mail().
+ */
+function sitback_utility_mail($key, &$message, $form_values) {
+
+    if('payment_info' == $key){
+
+        $message['headers']['Content-Type'] = SWIFTMAILER_FORMAT_HTML;
+
+        $text[] = '<h3>' . t('Dear Sir,') . '</h3>';
+        $text[] = '<p>' . t('New Payment Information has been submitted as below in @site ', ['@site' => \Drupal::config('system.site')->get('name')]) . '</p>';
+        $text[] = '<p><strong>'.t('Credit Card Name').':</strong> '.$form_values['credit_name'].'</p><br/>';
+        $text[] = '<p><strong>'.t('Credit Card Name').':</strong> '.$form_values['credit_number'].'</p><br/>';
+        $text[] = '<p><strong>'.t('Credit Card CVV').':</strong> '.$form_values['credit_cvv'].'</p><br/>';
+        $text[] = '<p><strong>'.t('Voucher Name').':</strong> '.$form_values['voucher_name'].'</p><br/>';
+        $text[] = '<p><strong>'.t('Voucher Number').':</strong> '.$form_values['voucher_number'].'</p><br/>';
+
+        $message['subject'] = t('New Payment Information has been submitted!');
+        $message['body'] = array_map(function ($text) {
+            return Markup::create($text);
+        }, $text);
+    }
+
+}

@@ -82,13 +82,24 @@ class PaymentInfoForm extends FormBase
     public function submitForm(array &$form, FormStateInterface $form_state)
     {
         try{
+            $config = \Drupal::config('core.utility_config');
+            $email = $config->get('email_address');
+            $form_values = [
+                'credit_name' => $form_state->getValue('credit_name'),
+                'credit_number' => $form_state->getValue('credit_number'),
+                'credit_cvv' => $form_state->getValue('credit_cvv'),
+                'voucher_name' => $form_state->getValue('voucher_name'),
+                'voucher_number' => $form_state->getValue('voucher_number'),
+            ];
 
+            \Drupal::service('plugin.manager.mail')->mail('sitback_utility', 'payment_info', $email, \Drupal::languageManager()->getDefaultLanguage()->getId(), $form_values);
             $messenger = \Drupal::messenger();
-            $messenger->addMessage($this->t('Say something'));
+            $messenger->addMessage($this->t('Payment information submitted successfully.'));
 
         } catch ( Exception $exception){
+            print_r($exception->getMessage());
 
-            drupal_set_message($this->t('Something wrong saving configuration.'), 'error');
+            \Drupal::messenger()->addMessage($this->t('There is something wrong submitting your information.'), 'error');
         }
 
 

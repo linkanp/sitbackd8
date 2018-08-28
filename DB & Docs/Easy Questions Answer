@@ -1,0 +1,12 @@
+Explain the process to deploy a Drupal 8 site from DEV to PROD:
+I am explaining the way I develop and deploy projects from Dev to Production.
+For new Projects:
+Use Git Repo with 3 branch named Dev, Str and Prod. Develop the site in Dev branch in local environment. After development commit and push all task to Dev branch. Deploy the Dev branch codebase to Dev server using Jenkins (configuring Jenkins is a different task). Import the database in Dev server and configure the settings file accordingly. After completing QA in Development site, merge Dev branch to Stg branch and build as like Dev in Staging site. Client review in Staging and upon confirmation I deploy the site in Production server similar to Dev and Staging using Jenkins.  
+
+For Maintanance Task:
+First complete the task in Dev branc and Deploy in development site. After QA, cherry pick the certain commit for that task from Dev to Stg branch then commit and deploy in Staging site using Jenkins. If there is an configuration need to sync then export those from Dev site and Import in Staging site. Repeat the same process to deploy from Staging to Production. 
+
+
+Explain when the use Features is required instead of Configuration Manager:
+Configuration manager is helful for syncing individual configuration from one site to another but when we need bundling functionalities together then features is required. In features, we can select certain things specific to a certain functionality (i,e. blog).
+
